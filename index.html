@@ -20,9 +20,9 @@
 
     <nav class="nav">
       <p class="nav-title">NAVIGATION</p>
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#blog">Blog</a>
+      <a href="#about" class="tab-link active" data-tab="about">About</a>
+      <a href="#research" class="tab-link" data-tab="research">Research</a>
+      <a href="#blog" class="tab-link" data-tab="blog">Blog</a>
       <a class="sub-link" href="blog/analog-ic-design-notes/index.html">
         Analog IC Design Notes
       </a>
@@ -36,7 +36,7 @@
   </aside>
 
   <main class="content">
-    <section id="about">
+    <section id="about" class="page-section active">
       <h2>About</h2>
 
       <p>
@@ -46,7 +46,7 @@
       </p>
     </section>
 
-    <section id="research">
+    <section id="research" class="page-section">
       <h2>Research</h2>
 
       <div class="research-item">
@@ -66,7 +66,7 @@
       </div>
     </section>
 
-    <section id="blog">
+    <section id="blog" class="page-section">
       <h2>Blog</h2>
 
       <div class="blog-card">
@@ -79,5 +79,54 @@
       </div>
     </section>
   </main>
+<script>
+  const tabLinks = document.querySelectorAll(".tab-link");
+  const sections = document.querySelectorAll(".page-section");
+
+  function showTab(tabId) {
+    sections.forEach(section => {
+      section.classList.remove("active");
+    });
+
+    tabLinks.forEach(link => {
+      link.classList.remove("active");
+    });
+
+    const targetSection = document.getElementById(tabId);
+    const targetLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
+
+    if (targetSection) {
+      targetSection.classList.add("active");
+    }
+
+    if (targetLink) {
+      targetLink.classList.add("active");
+    }
+  }
+
+  tabLinks.forEach(link => {
+    link.addEventListener("click", event => {
+      event.preventDefault();
+
+      const tabId = link.getAttribute("data-tab");
+      showTab(tabId);
+
+      history.pushState(null, "", `#${tabId}`);
+    });
+  });
+
+  const initialTab = window.location.hash.replace("#", "") || "about";
+
+  if (document.getElementById(initialTab)) {
+    showTab(initialTab);
+  } else {
+    showTab("about");
+  }
+
+  window.addEventListener("popstate", () => {
+    const tabId = window.location.hash.replace("#", "") || "about";
+    showTab(tabId);
+  });
+</script>
 </body>
 </html>

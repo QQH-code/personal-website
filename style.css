@@ -134,6 +134,19 @@ a {
   text-decoration: none;
 }
 
+.page-section {
+  display: none;
+}
+
+.page-section.active {
+  display: block;
+}
+
+.nav a.active {
+  color: var(--accent);
+  font-weight: 700;
+}
+
 @media (max-width: 850px) {
   .sidebar {
     position: relative;
