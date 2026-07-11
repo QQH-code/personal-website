@@ -11,11 +11,10 @@
 <body>
   <aside class="sidebar">
     <div class="profile">
-      <img src="assets/profile.jpg" alt="Profile photo" class="profile-img" />
+      <img src="assets/profile.png" alt="Profile photo" class="profile-img" />
 
       <h1>Qianhou Qu</h1>
-      <p class="subtitle">Ph.D. Student</p>
-      <p class="subtitle">Electrical Engineering</p>
+      <p class="subtitle">Graduate Student</p>
     </div>
 
     <nav class="nav">
@@ -27,23 +26,89 @@
         Analog IC Design Notes
       </a>
 
-      <p class="nav-title">EXTERNALS</p>
-      <a href="assets/cv.pdf" target="_blank">CV</a>
-      <a href="https://github.com/QQH-code" target="_blank">GitHub</a>
-      <a href="#" target="_blank">LinkedIn</a>
-      <a href="#" target="_blank">Google Scholar</a>
+        <p class="nav-title external-title">EXTERNALS</p>
+
+        <a class="external-link email-link" href="mailto:quqianhou0122@gmail.com">
+        <img src="assets/mail.avif" alt="Email icon" class="external-icon" />
+        <span class="email-text">quqianhou0122@gmail.com</span>
+        </a>
+
+        <a class="external-link" href="assets/cv.pdf" target="_blank" rel="noopener noreferrer">
+        <img src="assets/cv.png" alt="CV icon" class="external-icon" />
+        <span>CV</span>
+        </a>
+
+        <a class="external-link" href="https://www.linkedin.com/in/qianhou-qu-461689366" target="_blank" rel="noopener noreferrer">
+        <img src="assets/linkedin.png" alt="LinkedIn icon" class="external-icon" />
+        <span>LinkedIn</span>
+        </a>
+
+        <a class="external-link" href="https://scholar.google.com/citations?user=DLuZVksAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
+        <img src="assets/google-scholar.png" alt="Google Scholar icon" class="external-icon" />
+        <span>Google Scholar</span>
+        </a>
     </nav>
   </aside>
 
   <main class="content">
     <section id="about" class="page-section active">
-      <h2>About</h2>
+    <h2>About</h2>
 
-      <p>
-        I am a Ph.D. student in Electrical Engineering. My research interests include
-        analog neuromorphic computing hardware, memristor-based
-        accelerators, and spiking neural networks.
-      </p>
+    <p>
+        I am a Ph.D. student in Electrical Engineering at the
+        <a href="https://www.uta.edu/" target="_blank" rel="noopener noreferrer">
+        University of Texas at Arlington
+        </a>. My research focuses on brain-inspired neuromorphic computing, in-memory computing
+        based on emerging devices, hardware acceleration, and device/circuit modeling.
+        I am particularly interested in memristor-based accelerators, analog neuromorphic
+        computing hardware, and spiking neural networks.
+    </p>
+
+    <p>
+        Before joining UTA, I received my M.S. degree in Electrical Engineering from the
+        <a href="https://minghsiehece.usc.edu/" target="_blank" rel="noopener noreferrer">
+        University of Southern California
+        </a>. and my B.Eng. degree in Automation from
+        <a href="https://www.hebut.edu.cn/" target="_blank" rel="noopener noreferrer">
+        Hebei University of Technology
+        </a>. After my undergraduate study, I first worked as an Electrical Engineering
+        Intern at COFCO Coca-Cola, where hands-on experience with industrial electrical
+        equipment made me curious about how hardware systems work internally. Later, during
+        my Software Internship at
+        <a href="https://www.nxp.com/" target="_blank" rel="noopener noreferrer">
+        NXP Semiconductors
+        </a>, I realized that although software is powerful, I was more interested in the
+        underlying devices, circuits, and hardware architectures that make computation
+        possible. These experiences motivated me to pursue integrated circuits and
+        hardware-oriented research, especially in neuromorphic computing, in-memory
+        computing, and accelerator design.
+    </p>
+
+    <div class="school-logos">
+        <a href="https://www.uta.edu/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/uta-logo.png" alt="University of Texas at Arlington logo" />
+        </a>
+
+        <a href="https://minghsiehece.usc.edu/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/usc-logo.png" alt="University of Southern California logo" />
+        </a>
+
+        <a href="https://www.hebut.edu.cn/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/hebut-logo.png" alt="Hebei University of Technology logo" />
+        </a>
+
+        <a href="https://www.phikappaphi.org/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/pkp.png" alt="Phi Kappa Phi logo" />
+        </a>
+
+        <a href="https://www.nxp.com/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/nxp.avif" alt="NXP Semiconductors logo" />
+        </a>
+
+        <a href="#" target="_blank" rel="noopener noreferrer">
+            <img src="assets/cola.jpeg" alt="COFCO Coca-Cola logo" />
+        </a>
+    </div>
     </section>
 
     <section id="research" class="page-section">
@@ -83,7 +148,18 @@
   const tabLinks = document.querySelectorAll(".tab-link");
   const sections = document.querySelectorAll(".page-section");
 
-  function showTab(tabId) {
+  const tabOrder = ["about", "research", "blog"];
+  let currentTab = window.location.hash.replace("#", "") || "about";
+  let isSwitching = false;
+
+  let scrollBuffer = 0;
+  const scrollThreshold = 1220;
+
+  function showTab(tabId, resetScroll = true) {
+    if (!tabOrder.includes(tabId)) {
+      tabId = "about";
+    }
+
     sections.forEach(section => {
       section.classList.remove("active");
     });
@@ -102,6 +178,16 @@
     if (targetLink) {
       targetLink.classList.add("active");
     }
+
+    currentTab = tabId;
+    history.pushState(null, "", `#${tabId}`);
+
+    if (resetScroll) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
   }
 
   tabLinks.forEach(link => {
@@ -109,24 +195,100 @@
       event.preventDefault();
 
       const tabId = link.getAttribute("data-tab");
-      showTab(tabId);
-
-      history.pushState(null, "", `#${tabId}`);
+      showTab(tabId, true);
     });
   });
 
-  const initialTab = window.location.hash.replace("#", "") || "about";
-
-  if (document.getElementById(initialTab)) {
-    showTab(initialTab);
-  } else {
-    showTab("about");
+  function isAtPageBottom() {
+    return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 5;
   }
+
+  function isAtPageTop() {
+    return window.scrollY <= 5;
+  }
+
+  function switchToNextTab() {
+    const currentIndex = tabOrder.indexOf(currentTab);
+
+    if (currentIndex < tabOrder.length - 1) {
+      showTab(tabOrder[currentIndex + 1], true);
+    }
+  }
+
+  function switchToPreviousTab() {
+    const currentIndex = tabOrder.indexOf(currentTab);
+
+    if (currentIndex > 0) {
+      showTab(tabOrder[currentIndex - 1], false);
+
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth"
+        });
+      }, 50);
+    }
+  }
+
+    window.addEventListener(
+    "wheel",
+    event => {
+        if (isSwitching) return;
+
+        const scrollingDown = event.deltaY > 0;
+        const scrollingUp = event.deltaY < 0;
+
+        if (scrollingDown && isAtPageBottom()) {
+        const currentIndex = tabOrder.indexOf(currentTab);
+
+        if (currentIndex < tabOrder.length - 1) {
+            event.preventDefault();
+
+            scrollBuffer += Math.abs(event.deltaY);
+
+            if (scrollBuffer >= scrollThreshold) {
+            isSwitching = true;
+            scrollBuffer = 0;
+
+            switchToNextTab();
+
+            setTimeout(() => {
+                isSwitching = false;
+            }, 1000);
+            }
+        }
+        } else if (scrollingUp && isAtPageTop()) {
+        const currentIndex = tabOrder.indexOf(currentTab);
+
+        if (currentIndex > 0) {
+            event.preventDefault();
+
+            scrollBuffer += Math.abs(event.deltaY);
+
+            if (scrollBuffer >= scrollThreshold) {
+            isSwitching = true;
+            scrollBuffer = 0;
+
+            switchToPreviousTab();
+
+            setTimeout(() => {
+                isSwitching = false;
+            }, 1000);
+            }
+        }
+        } else {
+        scrollBuffer = 0;
+        }
+    },
+    { passive: false }
+    );
 
   window.addEventListener("popstate", () => {
     const tabId = window.location.hash.replace("#", "") || "about";
-    showTab(tabId);
+    showTab(tabId, true);
   });
+
+  showTab(currentTab, false);
 </script>
 </body>
 </html>
