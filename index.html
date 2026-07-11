@@ -122,23 +122,220 @@
     </section>
 
     <section id="research" class="page-section">
-      <h2>Research</h2>
+    <h2>Research</h2>
+    <article class="paper-card">
+    <div class="paper-gallery">
+        <div class="paper-gallery-track">
+        <img
+            src="assets/jetc1.png"
+            alt="JETC under-review paper figure 1"
+        />
 
-      <div class="research-item">
-        <h3>Memristor-Based Spiking Neural Network Accelerator</h3>
-        <p>
-          Circuit-level implementation of memristor synapses and analog integrate-and-fire
-          neurons for neuromorphic computing.
-        </p>
-      </div>
+        <img
+            src="assets/jetc2.png"
+            alt="JETC under-review paper figure 2"
+        />
 
-      <div class="research-item">
-        <h3>Analog Vision Transformer Accelerator</h3>
-        <p>
-          Analog crossbar-based accelerator design and area, delay, and energy comparison
-          with digital baselines.
+        <img
+            src="assets/jetc3.png"
+            alt="JETC under-review paper figure 3"
+        />
+
+        <img
+            src="assets/jetc4.png"
+            alt="JETC under-review paper figure 4"
+        />
+        </div>
+    </div>
+
+    <div class="paper-info">
+        <h3>Compact and Energy-Efficient Memristive Spiking Neuromorphic Accelerator for Bio-inspired Interception Tasks</h3>
+
+        <p class="paper-authors">
+        <strong>Qianhou Qu</strong>,
+        Sheng Lu,
+        Sungyong Jung,
+        Qilian Liang,
+        and Chenyun Pan
         </p>
-      </div>
+
+        <div class="paper-links">
+        <div class="paper-link-row">
+            <a href="https://arxiv.org/pdf/2605.31141" target="_blank" rel="noopener noreferrer">
+            Paper
+            </a>
+            <span class="paper-venue">Under Review</span>
+        </div>
+        </div>
+
+        <p class="paper-summary">
+        This work presents a compact and energy-efficient memristive spiking neuromorphic
+        accelerator for bio-inspired interception tasks. The design maps a 4-30-1 spiking
+        neural network onto 1T1R memristor crossbars for in-memory synaptic computation,
+        while a separated input and membrane-node integrate-and-fire neuron is developed
+        to improve temporal integration fidelity during array-interfaced operation. The
+        accelerator is implemented and evaluated at the circuit level using the SkyWater
+        SKY130 PDK, demonstrating reliable spike-based inference, strong agreement with
+        the software SNN baseline, and efficient real-time interception performance.
+        </p>
+    </div>
+    </article>
+    <article class="paper-card">
+    <div class="paper-gallery">
+        <div class="paper-gallery-track">
+        <img
+            src="assets/dcas1.png"
+            alt="DCAS paper figure 1"
+        />
+
+        <img
+            src="assets/dcas2.png"
+            alt="DCAS paper figure 2"
+        />
+
+        <img
+            src="assets/dcas3.png"
+            alt="DCAS paper figure 3"
+        />
+        </div>
+    </div>
+
+    <div class="paper-info">
+        <h3>Memristor-Based Spiking Neural Network Accelerator for Bio-inspired Interception Task</h3>
+
+        <p class="paper-authors">
+        <strong>Qianhou Qu</strong>,
+        Sheng Lu,
+        Liuting Shang,
+        Jaihan Utailawon,
+        Sungyong Jung,
+        Qilian Liang,
+        and Chenyun Pan
+        </p>
+
+        <div class="paper-links">
+        <div class="paper-link-row">
+            <a href="https://ieeexplore.ieee.org/abstract/document/11544446" target="_blank" rel="noopener noreferrer">
+            Paper
+            </a>
+            <span class="paper-venue">19th IEEE Dallas Circuits and Systems Conference (DCAS 2026)</span>
+        </div>
+        </div>
+
+        <p class="paper-summary">
+        This work presents an analog memristor-based spiking neural network accelerator
+        for a bio-inspired interception task. The accelerator integrates memristor
+        crossbar-based in-memory synaptic computation with analog integrate-and-fire
+        neuron circuits to support asynchronous event-driven inference. The system is
+        evaluated on a predator-prey tracking task, where the circuit-level inference
+        closely matches ideal software inference. Compared with a 5 nm digital SNN
+        accelerator baseline, the proposed analog design demonstrates lower energy
+        consumption and reduced delay, showing the potential of memristor-based
+        neuromorphic hardware for efficient real-time edge intelligence.
+        </p>
+    </div>
+    </article>
+    <article class="paper-card">
+        <div class="paper-gallery">
+        <div class="paper-gallery-track">
+            <img
+            src="assets/eci1.png"
+            alt="Memristor-based spiking neural network accelerator figure 1"
+            />
+
+            <img
+            src="assets/eci2.png"
+            alt="Memristor-based spiking neural network accelerator figure 2"
+            />
+
+            <img
+            src="assets/eci3.png"
+            alt="Memristor-based spiking neural network accelerator figure 3"
+            />
+        </div>
+        </div>
+
+        <div class="paper-info">
+        <h3>Memristor-Based Spiking Neural Network Accelerator for Neuromorphic Computing</h3>
+
+        <p class="paper-authors">
+            <strong>Qianhou Qu</strong> and Chenyun Pan
+        </p>
+
+        <p class="paper-links">
+            <a href="https://drive.google.com/file/d/1Hs8uimeR4rVVdFHfT37CyH-bxT-e_7J1/view" target="_blank" rel="noopener noreferrer">Paper</a>
+            <span class="paper-venue">2026 Energy Consequences of Information Workshop</span>
+        </p>
+
+        <p class="paper-summary">
+            This work develops a memristor-based spiking neural network accelerator for
+            reinforcement learning driven neuromorphic computing. A reinforcement learning
+            framework is used to train the spiking neural network for task-oriented decision
+            making, while the trained synaptic weights are mapped onto memristor crossbars and
+            analog integrate-and-fire neuron circuits. The design demonstrates how reinforcement
+            learning, spiking neural dynamics, and in-memory analog computing can be integrated
+            to build efficient neuromorphic accelerators with advantages in area, delay, and
+            energy consumption.
+        </p>
+        </div>
+    </article>
+
+    <article class="paper-card">
+        <div class="paper-gallery">
+        <div class="paper-gallery-track">
+            <img
+            src="assets/vit1.png"
+            alt="Vision Transformer analog accelerator figure 1"
+            />
+
+            <img
+            src="assets/vit2.png"
+            alt="Vision Transformer analog accelerator figure 2"
+            />
+
+            <img
+            src="assets/vit3.png"
+            alt="Vision Transformer analog accelerator figure 3"
+            />
+        </div>
+        </div>
+
+        <div class="paper-info">
+        <h3>Variation-Aware Memristor-Based Analog Accelerator for Vision Transformer</h3>
+
+        <p class="paper-authors">
+            <strong>Qianhou Qu</strong><sup>1</sup>,
+            Sheng Lu<sup>1</sup>,
+            Liuting Shang<sup>1</sup>,
+            Sungyong Jung<sup>2</sup>,
+            Qilian Liang<sup>1</sup>,
+            and Chenyun Pan<sup>1,*</sup>
+        </p>
+
+        <p class="paper-links">
+            <a href="https://www.mdpi.com/2079-9292/15/5/1116" target="_blank" rel="noopener noreferrer">
+                Paper1: 
+            </a>
+
+            <span class="paper-venue">MDPI Electronics, </span>
+
+            <a href="https://ieeexplore.ieee.org/abstract/document/11244310" target="_blank" rel="noopener noreferrer">
+                Paper2: 
+            </a>
+
+            <span class="paper-venue">2025 IEEE International Midwest Symposium on Circuits and Systems (MWSCAS)</span>
+        </p>
+
+        <p class="paper-summary">
+            This work presents a variation-aware memristor-based analog accelerator for
+            Vision Transformer inference. It uses analog in-memory computing to accelerate
+            matrix operations and evaluates the design from the perspectives of area, delay,
+            energy, and device-level variation. The study focuses on improving hardware
+            efficiency for Transformer workloads while considering practical non-idealities
+            in emerging-device-based analog computing systems.
+        </p>
+        </div>
+    </article>
     </section>
 
     <section id="blog" class="page-section">
